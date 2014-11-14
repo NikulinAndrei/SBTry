@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="5 seconds">
+
+    <appender name="ED" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>%-5level %date{HH:mm:ss.SSS} %logger{26} - %msg %n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>/var/log/tomcat/ojs/ojsweb.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>180</MaxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-5level %date{HH:mm:ss.SSS}  %logger{26} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="sbtry" level="DEBUG"/>
+
+
+    <root level="WARN">
+        <!-- appender-ref ref="ED"/ -->
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
